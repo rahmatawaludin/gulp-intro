@@ -6,12 +6,26 @@ var jshint = require('gulp-jshint');
 var changed = require('gulp-changed');
 var imagemin = require('gulp-imagemin');
 var concat = require('gulp-concat');
+var notify = require('gulp-notify');
 
 
 // JS hint task
 gulp.task('jshint', function() {
   return gulp.src('./src/scripts/*.js')
             .pipe(jshint())
+            .pipe(notify(function (file) {
+              if (file.jshint.success) {
+                // don't show something if success
+                return false;
+              }
+
+              var errors = file.jshint.results.map(function (data) {
+                if (data.error) {
+                  return "(" + data.error.line + ':' + data.error.character + ')' + data.error.reason;
+                }
+              }).join('\n');
+              return file.relative + " (" + file.jshint.results.length + " errors)\n" + errors;
+            }))
             .pipe(jshint.reporter('default'));
 });
 
