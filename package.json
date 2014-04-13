@@ -1,0 +1,12 @@
+{
+  "name": "gulp-intro",
+  "description": "Gulp intro",
+  "version": "0.1.0",
+  "author": {
+    "name": "Rahmat Awaludin",
+    "email": "rahmat.awaludin@gmail.com"
+  },
+  "devDependencies": {
+    "gulp": "3.6.0"
+  }
+}
