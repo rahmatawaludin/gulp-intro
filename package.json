@@ -7,6 +7,10 @@
     "email": "rahmat.awaludin@gmail.com"
   },
   "devDependencies": {
-    "gulp": "3.6.0"
+    "gulp": "3.6.0",
+    "gulp-jshint": "1.5.*",
+    "gulp-changed": "0.3.*",
+    "gulp-imagemin": "0.2.*",
+    "gulp-concat": "2.2.0"
   }
 }
