@@ -7,6 +7,7 @@ var changed = require('gulp-changed');
 var imagemin = require('gulp-imagemin');
 var concat = require('gulp-concat');
 var notify = require('gulp-notify');
+var sass = require('gulp-sass');
 
 
 // JS hint task
@@ -46,10 +47,19 @@ gulp.task('concatjs', function() {
             .pipe(concat('main.js'))
             .pipe(gulp.dest('./build/scripts/'))
 })
+
+// compile sass
+gulp.task('sass', function() {
+  return gulp.src('./src/styles/*.scss')
+          .pipe(sass())
+          .pipe(gulp.dest('./build/styles'));
+});
 // defautl task
 gulp.task('default', ['concatjs', 'imagemin', 'jshint'], function() {
   // watch for images changes
   gulp.watch('./src/images/**/*', ['imagemin']);
   // watch for js changes
   gulp.watch('./src/scripts/*.js', ['jshint', 'concatjs']);
+  // watch for scss changes
+  gulp.watch('./src/styles/**/*', ['sass']);
 });

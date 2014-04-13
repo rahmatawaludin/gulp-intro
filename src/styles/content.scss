@@ -1,0 +1,7 @@
+$blue: #3bbfce;
+$red: #ff0000;
+
+.border {
+    background-color: $red;
+    border-color: darken($blue, 10%);
+}
